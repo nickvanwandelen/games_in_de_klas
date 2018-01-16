@@ -1,0 +1,127 @@
+{
+  "themes": [
+    {
+      "theme_name": "Capitals",
+      "theme_description": "Theme about the capitals around the world!",
+      "start_text": "Press start to play, you have 2 minutes to awnser as many questions as possible!",
+      "end_text": "Good job!",
+      "allocated_time": "5",
+      "negative_score": "true",
+      "random_questions": "true",
+      "random_awnsers": "true",
+      "loop_questions": "true",
+      "theme_questions": [
+        ["Albania","Tirana"],
+        ["Andorra","Andorra la Vella"],
+        ["Armenia","Yerevan"],
+        ["Austria","Vienna"],
+        ["Azerbaijan","Baku"],
+        ["Belarus","Minsk"],
+        ["Belgium","Brussels"],
+        ["Bosnia and Herzegovina","Sarajevo"],
+        ["Bulgaria","Sofia"],
+        ["Croatia","Zagreb"],
+        ["Cyprus","Nicosia"],
+        ["Czech Republic","Prague"],
+        ["Denmark","Copenhagen"],
+        ["Estonia","Tallinn"],
+        ["Finland","Helsinki"],
+        ["France","Paris"],
+        ["Georgia","Tbilisi"],
+        ["Germany","Berlin"],
+        ["Greece","Athens"],
+        ["Hungary","Budapest"],
+        ["Iceland","Reykjavik"],
+        ["Ireland","Dublin"],
+        ["Italy","Rome"],
+        ["Kazakhstan","Astana"],
+        ["Kosovo","Pristina"],
+        ["Latvia","Riga"],
+        ["Liechtenstein","Vaduz"],
+        ["Lithuania","Vilnius"],
+        ["Luxembourg","Luxembourg (city)"],
+        ["Macedonia (FYROM)","Skopje"],
+        ["Malta","Valletta"],
+        ["Moldova","Chisinau"],
+        ["Monaco","Monaco"],
+        ["Montenegro","Podgorica"],
+        ["Netherlands","Amsterdam"],
+        ["Norway","Oslo"],
+        ["Poland","Warsaw"],
+        ["Portugal","Lisbon"],
+        ["Romania","Bucharest"],
+        ["Russia","Moscow"],
+        ["San Marino","San Marino"],
+        ["Serbia","Belgrade"],
+        ["Slovakia","Bratislava"],
+        ["Slovenia","Ljubljana"],
+        ["Spain","Madrid"],
+        ["Sweden","Stockholm"],
+        ["Switzerland","Bern"],
+        ["Turkey","Ankara"],
+        ["Ukraine","Kyiv (also known as Kiev)"],
+        ["United Kingdom","London"],
+        ["Vatican City (Holy See)","Vatican City"]
+      ]
+    },
+    {
+      "theme_name": "Beer Facts",
+      "theme_description": "Theme about beers!",
+      "start_text": "Press start to play, you have 2 minutes to awnser as many questions as possible!",
+      "allocated_time": "120",
+      "negative_score": "true",
+      "random_questions": "true",
+      "random_awnsers": "true",
+      "loop_questions": "true",
+      "theme_questions": [
+        {
+          "question": "Of which country is Heineken originally from?",
+          "correct_awnser": "The Netherlands",
+          "possible_awnsers": ["USA", "Belgium", "Brazil"]
+        },
+        {
+          "question": "What kind of beer is NOT blond?",
+          "correct_awnser": "Porter",
+          "possible_awnsers": ["Pilsner", "Wheat", "Saison"]
+        },
+        {
+          "question": "True or False: the Heineken logo doesn't have a red star in Hungary ",
+          "correct_awnser": "True",
+          "possible_awnsers": ["False"]
+        }
+      ]
+    },
+    {
+      "theme_name": "Puzzles & Games",
+      "theme_description": "Theme about puzzels all over the world",
+      "start_text": "Press start to play, you have 2 minutes to awnser as many questions as possible!",
+      "allocated_time": "120",
+      "negative_score": "true",
+      "random_questions": "true",
+      "random_awnsers": "true",
+      "loop_questions": "true",
+      "theme_questions": [
+        {
+          "question": "What puzzle has a 3*3 grid where you can fill in the numbers 1-9?",
+          "correct_awnser": "Sudoku",
+          "possible_awnsers": ["Wordseeker", "Crossword"]
+        },
+        {
+          "question": "What boardgame has a elderly man with a monocle as a mascot?",
+          "correct_awnser": "Monopoly",
+          "possible_awnsers": ["Risk", "Settlers of Catan", "Chess"]
+        },
+        {
+          "question": "True or False: a horse piece in chess cannot get to every cell in a chessboard",
+          "correct_awnser": "False",
+          "possible_awnsers": "True"
+        },
+        {
+          "question": "Where did the inventor of the Rubik's Cube, Erno Rubik come from?",
+          "correct_awnser": "Hungary",
+          "possible_awnsers": ["USA", "Slovenia", "Czech Republic"]
+        }
+      ]
+    }
+  ]
+}
