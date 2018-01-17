@@ -8,7 +8,7 @@ var submittedAnswers;
 
 var currentTime;
 var allocatedTime;
-var started = false;
+var started;
 
 var score = 0;
 var allowNegativeScore = true;
@@ -25,11 +25,13 @@ var awnserTextGroup;
 var self;
 var styleA;
 var styleB;
-var timer;
+var countdownTimer;
 
 var scoreField;
 var timeField;
 var questionField;
+var questionIndexField;
+var startStopField;
 
 BasicGame.Game = function(game){};
 
@@ -75,10 +77,13 @@ BasicGame.Game.prototype = {
         allowRandomAwnsers = (themeJson.random_awnsers === "true");
         allowRandomQuestions = (themeJson.random_questions === "true");
         allowLoopQuestions = (themeJson.loop_questions === "true");
-        currentQuestion = -1;
+        started = false;
+        score = 0;
+        questionIndex = 0;
+        currentQuestion = null;
         allocatedTime = themeJson.allocated_time;
         currentTime = allocatedTime;
-        maximumQuestions = themeJson.theme_questions.length;
+        maximumQuestions = (themeJson.theme_questions.length - 1);
 
         console.log("Game variables loaded");
     },
@@ -89,10 +94,10 @@ BasicGame.Game.prototype = {
         //Creating feedback text
         feedbackHud = this.game.add.group();
         scoreField = this.game.add.text(20, 50, "Score: " + score, styleA, feedbackHud);
-        timeField = this.game.add.text(20, 100, "Tijd: " + currentTime, styleA, feedbackHud);
-        questionIndexField = this.game.add.text(20, 150, "Vraag: ", styleA, feedbackHud);
+        timeField = this.game.add.text(20, 100, "Time: " + currentTime, styleA, feedbackHud);
+        questionIndexField = this.game.add.text(20, 150, "Question: ", styleA, feedbackHud);
 
-        var startStopField = this.game.add.text(20, self.game.world.centerY, "Start Game", styleB, feedbackHud);
+        startStopField = this.game.add.text(20, self.game.world.centerY, "Start Game", styleB, feedbackHud);
         startStopField.name = "startstop";
         startStopField.inputEnabled = true;
         var muteSoundField = this.game.add.text(20, self.game.world.centerY + 200, "Mute Sound", styleB, feedbackHud);
@@ -161,7 +166,14 @@ BasicGame.Game.prototype = {
         if(selectedAnswer === currentQuestion[1]){
             score = score + 10;
             submittedAnswers.push("Correct");
-            this.nextQuestion();
+
+            if(questionIndex === maximumQuestions && !allowLoopQuestions){
+                this.handleEndOfGame();
+            }
+            else{
+                questionIndex++;
+                this.nextQuestion();
+            }
         }
         else{
             if(!allowNegativeScore && (score - 5) < 0){
@@ -176,17 +188,22 @@ BasicGame.Game.prototype = {
     },
 
     startGame: function(){
-        if(started){
-            this.stopGame();
-        }
         started = !started;
+
+        if(started){
+            startStopField.text = "Stop game";
+
+        }
+        else{
+            this.handleEndOfGame();
+        }
         awnserFrameGroup.visible = true;
         awnserTextGroup.visible = true;
         submittedAnswers = [];
 
-        timer = self.game.time.create();
-        var timerEvent = timer.add(1000, this.updateTime, this);
-        timer.start();
+        countdownTimer = self.game.time.create();
+        var updateTimeEvent = countdownTimer.add(1000, this.updateTime, this);
+        countdownTimer.start();
 
         this.nextQuestion();
     },
@@ -204,9 +221,14 @@ BasicGame.Game.prototype = {
     },
 
     handleEndOfGame: function(){
+        currentTime = -1;
+        countdownTimer.removeAll();
+
         awnserFrameGroup.visible = false;
         awnserTextGroup.visible = false;
         questionField.text = themeJson.end_text;
+
+
 
         var countCorrect = 0;
         var countIncorrect = 0;
@@ -220,30 +242,26 @@ BasicGame.Game.prototype = {
             }
         }
 
-        timeField.text = "Goed: " + countCorrect;
-        questionIndexField.text = "Fout: " + countIncorrect;
+        timeField.text = "Correct: " + countCorrect;
+        questionIndexField.text = "Incorrect: " + countIncorrect;
+        startStopField.visible = false;
 
         var returnToMainMenu = self.game.time.create();
-        var timerEvent = returnToMainMenu.add(5000, function(){this.game.state.start('MainMenu')}, this);
+        var mainMenuEvent = returnToMainMenu.add(7000, function(){this.game.state.start('MainMenu')}, this);
         returnToMainMenu.start();
     },
 
     nextQuestion: function(){
-        if(questions.length === 3 || questions.length === questionIndex){
-            this.handleEndOfGame();
-        }
-
         if(allowRandomQuestions){
-            questionIndex = Math.floor(Math.random() * questions.length);
-            currentQuestion = questions[questionIndex];
+            var randomQuestionIndex = Math.floor(Math.random() * questions.length);
+            currentQuestion = questions[randomQuestionIndex];
 
             if(!allowLoopQuestions){
-                questions.splice(questionIndex, 1);
+                questions.splice(questions[randomQuestionIndex], 1);
             }
 
         }
         else{
-            questionIndex++;
             currentQuestion = questions[questionIndex];
 
             if(allowLoopQuestions && questions.length === questionIndex){
@@ -281,20 +299,18 @@ BasicGame.Game.prototype = {
         }
 
         questionField.text = currentQuestion[0];
-        questionIndexField.text = "Vraag: " + questionIndex + "/" + questions.length;
+        questionIndexField.text = "Question: " + (questionIndex + 1) + "/" + (maximumQuestions + 1);
 
     },
 
     updateTime: function(){
         currentTime--;
 
-        if(currentTime < 0){
+        if(currentTime <= 0){
             this.handleEndOfGame();
         }
         else{
-            timeField.text = "Tijd: " + currentTime;
-            timer.add(1000, this.updateTime, this);
-            timer.start();
+            timeField.text = "Time: " + currentTime;
         }
     }
 };

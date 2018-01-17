@@ -5,11 +5,11 @@
       "theme_description": "Theme about the capitals around the world!",
       "start_text": "Press start to play, you have 2 minutes to awnser as many questions as possible!",
       "end_text": "Good job!",
-      "allocated_time": "5",
+      "allocated_time": "120",
       "negative_score": "true",
-      "random_questions": "true",
+      "random_questions": "false",
       "random_awnsers": "true",
-      "loop_questions": "true",
+      "loop_questions": "false",
       "theme_questions": [
         ["Albania","Tirana"],
         ["Andorra","Andorra la Vella"],
@@ -67,28 +67,28 @@
     {
       "theme_name": "Beer Facts",
       "theme_description": "Theme about beers!",
-      "start_text": "Press start to play, you have 2 minutes to awnser as many questions as possible!",
-      "allocated_time": "120",
+      "start_text": "Press start to play, you have 90 seconds to awnser as many questions as possible!",
+      "end_text": "Good Job!",
+      "allocated_time": "90",
       "negative_score": "true",
-      "random_questions": "true",
+      "random_questions": "false",
       "random_awnsers": "true",
-      "loop_questions": "true",
+      "loop_questions": "false",
       "theme_questions": [
-        {
-          "question": "Of which country is Heineken originally from?",
-          "correct_awnser": "The Netherlands",
-          "possible_awnsers": ["USA", "Belgium", "Brazil"]
-        },
-        {
-          "question": "What kind of beer is NOT blond?",
-          "correct_awnser": "Porter",
-          "possible_awnsers": ["Pilsner", "Wheat", "Saison"]
-        },
-        {
-          "question": "True or False: the Heineken logo doesn't have a red star in Hungary ",
-          "correct_awnser": "True",
-          "possible_awnsers": ["False"]
-        }
+        ["Hydrogen", "H"],
+        ["Helium", "He"],
+        ["Carbon", "C"],
+        ["Oxygen", "O"],
+        ["Sulfur", "S"],
+        ["Fluor", "F"],
+        ["Argon", "Ar"],
+        ["Titanium", "Ti"],
+        ["Nickel", "Ni"],
+        ["Yttrium", "Y"],
+        ["Xeon", "Xe"],
+        ["Iridium", "Ir"],
+        ["Uranium", "U"],
+        ["Lawrencium", "Lr"]
       ]
     },
     {
