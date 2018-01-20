@@ -1,127 +1,388 @@
 {
-  "themes": [
-    {
-      "theme_name": "Capitals",
-      "theme_description": "Theme about the capitals around the world!",
-      "start_text": "Press start to play, you have 2 minutes to awnser as many questions as possible!",
-      "end_text": "Good job!",
-      "allocated_time": "120",
-      "negative_score": "true",
-      "random_questions": "false",
-      "random_awnsers": "true",
-      "loop_questions": "false",
-      "theme_questions": [
-        ["Albania","Tirana"],
-        ["Andorra","Andorra la Vella"],
-        ["Armenia","Yerevan"],
-        ["Austria","Vienna"],
-        ["Azerbaijan","Baku"],
-        ["Belarus","Minsk"],
-        ["Belgium","Brussels"],
-        ["Bosnia and Herzegovina","Sarajevo"],
-        ["Bulgaria","Sofia"],
-        ["Croatia","Zagreb"],
-        ["Cyprus","Nicosia"],
-        ["Czech Republic","Prague"],
-        ["Denmark","Copenhagen"],
-        ["Estonia","Tallinn"],
-        ["Finland","Helsinki"],
-        ["France","Paris"],
-        ["Georgia","Tbilisi"],
-        ["Germany","Berlin"],
-        ["Greece","Athens"],
-        ["Hungary","Budapest"],
-        ["Iceland","Reykjavik"],
-        ["Ireland","Dublin"],
-        ["Italy","Rome"],
-        ["Kazakhstan","Astana"],
-        ["Kosovo","Pristina"],
-        ["Latvia","Riga"],
-        ["Liechtenstein","Vaduz"],
-        ["Lithuania","Vilnius"],
-        ["Luxembourg","Luxembourg (city)"],
-        ["Macedonia (FYROM)","Skopje"],
-        ["Malta","Valletta"],
-        ["Moldova","Chisinau"],
-        ["Monaco","Monaco"],
-        ["Montenegro","Podgorica"],
-        ["Netherlands","Amsterdam"],
-        ["Norway","Oslo"],
-        ["Poland","Warsaw"],
-        ["Portugal","Lisbon"],
-        ["Romania","Bucharest"],
-        ["Russia","Moscow"],
-        ["San Marino","San Marino"],
-        ["Serbia","Belgrade"],
-        ["Slovakia","Bratislava"],
-        ["Slovenia","Ljubljana"],
-        ["Spain","Madrid"],
-        ["Sweden","Stockholm"],
-        ["Switzerland","Bern"],
-        ["Turkey","Ankara"],
-        ["Ukraine","Kyiv (also known as Kiev)"],
-        ["United Kingdom","London"],
-        ["Vatican City (Holy See)","Vatican City"]
-      ]
-    },
-    {
-      "theme_name": "Beer Facts",
-      "theme_description": "Theme about beers!",
-      "start_text": "Press start to play, you have 90 seconds to awnser as many questions as possible!",
-      "end_text": "Good Job!",
-      "allocated_time": "90",
-      "negative_score": "true",
-      "random_questions": "false",
-      "random_awnsers": "true",
-      "loop_questions": "false",
-      "theme_questions": [
-        ["Hydrogen", "H"],
-        ["Helium", "He"],
-        ["Carbon", "C"],
-        ["Oxygen", "O"],
-        ["Sulfur", "S"],
-        ["Fluor", "F"],
-        ["Argon", "Ar"],
-        ["Titanium", "Ti"],
-        ["Nickel", "Ni"],
-        ["Yttrium", "Y"],
-        ["Xeon", "Xe"],
-        ["Iridium", "Ir"],
-        ["Uranium", "U"],
-        ["Lawrencium", "Lr"]
-      ]
-    },
-    {
-      "theme_name": "Puzzles & Games",
-      "theme_description": "Theme about puzzels all over the world",
-      "start_text": "Press start to play, you have 2 minutes to awnser as many questions as possible!",
-      "allocated_time": "120",
-      "negative_score": "true",
-      "random_questions": "true",
-      "random_awnsers": "true",
-      "loop_questions": "true",
-      "theme_questions": [
+    "themes": [
         {
-          "question": "What puzzle has a 3*3 grid where you can fill in the numbers 1-9?",
-          "correct_awnser": "Sudoku",
-          "possible_awnsers": ["Wordseeker", "Crossword"]
+            "theme_id": "TestID1",
+            "theme_name": "Capitals",
+            "theme_description": "Theme about the capitals around the world!",
+            "start_text": "Press start to play, you have 2 minutes to awnser as many questions as possible!",
+            "end_text": "Good job!",
+            "allocated_time": "120",
+            "negative_score": true,
+            "random_questions": false,
+            "random_awnsers": true,
+            "loop_questions": false,
+            "theme_questions": [
+                [
+                    "Albania",
+                    "Tirana"
+                ],
+                [
+                    "Andorra",
+                    "Andorra la Vella"
+                ],
+                [
+                    "Armenia",
+                    "Yerevan"
+                ],
+                [
+                    "Austria",
+                    "Vienna"
+                ],
+                [
+                    "Azerbaijan",
+                    "Baku"
+                ],
+                [
+                    "Belarus",
+                    "Minsk"
+                ],
+                [
+                    "Belgium",
+                    "Brussels"
+                ],
+                [
+                    "Bosnia and Herzegovina",
+                    "Sarajevo"
+                ],
+                [
+                    "Bulgaria",
+                    "Sofia"
+                ],
+                [
+                    "Croatia",
+                    "Zagreb"
+                ],
+                [
+                    "Cyprus",
+                    "Nicosia"
+                ],
+                [
+                    "Czech Republic",
+                    "Prague"
+                ],
+                [
+                    "Denmark",
+                    "Copenhagen"
+                ],
+                [
+                    "Estonia",
+                    "Tallinn"
+                ],
+                [
+                    "Finland",
+                    "Helsinki"
+                ],
+                [
+                    "France",
+                    "Paris"
+                ],
+                [
+                    "Georgia",
+                    "Tbilisi"
+                ],
+                [
+                    "Germany",
+                    "Berlin"
+                ],
+                [
+                    "Greece",
+                    "Athens"
+                ],
+                [
+                    "Hungary",
+                    "Budapest"
+                ],
+                [
+                    "Iceland",
+                    "Reykjavik"
+                ],
+                [
+                    "Ireland",
+                    "Dublin"
+                ],
+                [
+                    "Italy",
+                    "Rome"
+                ],
+                [
+                    "Kazakhstan",
+                    "Astana"
+                ],
+                [
+                    "Kosovo",
+                    "Pristina"
+                ],
+                [
+                    "Latvia",
+                    "Riga"
+                ],
+                [
+                    "Liechtenstein",
+                    "Vaduz"
+                ],
+                [
+                    "Lithuania",
+                    "Vilnius"
+                ],
+                [
+                    "Luxembourg",
+                    "Luxembourg (city)"
+                ],
+                [
+                    "Macedonia (FYROM)",
+                    "Skopje"
+                ],
+                [
+                    "Malta",
+                    "Valletta"
+                ],
+                [
+                    "Moldova",
+                    "Chisinau"
+                ],
+                [
+                    "Monaco",
+                    "Monaco"
+                ],
+                [
+                    "Montenegro",
+                    "Podgorica"
+                ],
+                [
+                    "Netherlands",
+                    "Amsterdam"
+                ],
+                [
+                    "Norway",
+                    "Oslo"
+                ],
+                [
+                    "Poland",
+                    "Warsaw"
+                ],
+                [
+                    "Portugal",
+                    "Lisbon"
+                ],
+                [
+                    "Romania",
+                    "Bucharest"
+                ],
+                [
+                    "Russia",
+                    "Moscow"
+                ],
+                [
+                    "San Marino",
+                    "San Marino"
+                ],
+                [
+                    "Serbia",
+                    "Belgrade"
+                ],
+                [
+                    "Slovakia",
+                    "Bratislava"
+                ],
+                [
+                    "Slovenia",
+                    "Ljubljana"
+                ],
+                [
+                    "Spain",
+                    "Madrid"
+                ],
+                [
+                    "Sweden",
+                    "Stockholm"
+                ],
+                [
+                    "Switzerland",
+                    "Bern"
+                ],
+                [
+                    "Turkey",
+                    "Ankara"
+                ],
+                [
+                    "Ukraine",
+                    "Kyiv (also known as Kiev)"
+                ],
+                [
+                    "United Kingdom",
+                    "London"
+                ],
+                [
+                    "Vatican City (Holy See)",
+                    "Vatican City"
+                ]
+            ]
         },
         {
-          "question": "What boardgame has a elderly man with a monocle as a mascot?",
-          "correct_awnser": "Monopoly",
-          "possible_awnsers": ["Risk", "Settlers of Catan", "Chess"]
+            "theme_id": "Appelsap",
+            "theme_name": "Beer Facts",
+            "theme_description": "Theme about beers!",
+            "start_text": "Press start to play, you have 90 seconds to awnser as many questions as possible!",
+            "end_text": "Good Job!",
+            "allocated_time": "90",
+            "negative_score": true,
+            "random_questions": false,
+            "random_awnsers": true,
+            "loop_questions": false,
+            "theme_questions": [
+                [
+                    "Hydrogen",
+                    "H"
+                ],
+                [
+                    "Helium",
+                    "He"
+                ],
+                [
+                    "Carbon",
+                    "C"
+                ],
+                [
+                    "Oxygen",
+                    "O"
+                ],
+                [
+                    "Sulfur",
+                    "S"
+                ],
+                [
+                    "Fluor",
+                    "F"
+                ],
+                [
+                    "Argon",
+                    "Ar"
+                ],
+                [
+                    "Titanium",
+                    "Ti"
+                ],
+                [
+                    "Nickel",
+                    "Ni"
+                ],
+                [
+                    "Yttrium",
+                    "Y"
+                ],
+                [
+                    "Xeon",
+                    "Xe"
+                ],
+                [
+                    "Iridium",
+                    "Ir"
+                ],
+                [
+                    "Uranium",
+                    "U"
+                ],
+                [
+                    "Lawrencium",
+                    "Lr"
+                ]
+            ]
         },
         {
-          "question": "True or False: a horse piece in chess cannot get to every cell in a chessboard",
-          "correct_awnser": "False",
-          "possible_awnsers": "True"
+            "theme_id": "NasiGoreng",
+            "theme_name": "City Geography",
+            "theme_description": "A theme about the largest cities in the world!",
+            "start_text": "You have 120 seconds to answer as many questions as possible",
+            "end_text": "Well done!",
+            "allocated_time": "120",
+            "negative_score": true,
+            "random_questions": true,
+            "random_awnsers": false,
+            "loop_questions": true,
+            "theme_questions": [
+                [
+                    "Tokyo",
+                    "1"
+                ],
+                [
+                    "New York",
+                    "2"
+                ],
+                [
+                    "Sao Paulo",
+                    "3"
+                ],
+                [
+                    "Seoul",
+                    "4"
+                ],
+                [
+                    "Mexico City",
+                    "5"
+                ],
+                [
+                    "Osaka",
+                    "6"
+                ],
+                [
+                    "Manila",
+                    "7"
+                ],
+                [
+                    "Mumbai",
+                    "8"
+                ],
+                [
+                    "Delhi",
+                    "9"
+                ],
+                [
+                    "Jakarta",
+                    "10"
+                ]
+            ]
         },
         {
-          "question": "Where did the inventor of the Rubik's Cube, Erno Rubik come from?",
-          "correct_awnser": "Hungary",
-          "possible_awnsers": ["USA", "Slovenia", "Czech Republic"]
+            "theme_id": "theme_5a629508ca663",
+            "theme_name": "Programming Dates",
+            "theme_description": "A theme about the release dates of programming languages",
+            "start_text": "Hello! You have 60 seconds to complete this theme",
+            "end_text": "Nice work!",
+            "allocated_time": "60",
+            "negative_score": true,
+            "random_questions": true,
+            "random_awnsers": false,
+            "loop_questions": true,
+            "theme_questions": [
+                [
+                    "TypeScript",
+                    "2012"
+                ],
+                [
+                    "Powershell",
+                    "2006"
+                ],
+                [
+                    "VB .NET",
+                    "2001"
+                ],
+                [
+                    "Javascript",
+                    "1995"
+                ],
+                [
+                    "Haskell",
+                    "1990"
+                ],
+                [
+                    "Test A",
+                    "Test A"
+                ],
+                [
+                    "Test B",
+                    "Test B"
+                ]
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

@@ -65,5 +65,9 @@
     else window.onload = autorun;
 </script>
 
+<nav>
+    <a href="index.php"><button>Game</button></a>
+    <a href="php/themebuilder.php"><button>Theme Builder</button></a>
+</nav>
 </body>
 </html>

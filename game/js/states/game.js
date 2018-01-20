@@ -73,10 +73,10 @@ BasicGame.Game.prototype = {
 
         //Retrieving theme variables from the JSON file
         questions = themeJson.theme_questions;
-        allowNegativeScore = (themeJson.negative_score === "true");
-        allowRandomAwnsers = (themeJson.random_awnsers === "true");
-        allowRandomQuestions = (themeJson.random_questions === "true");
-        allowLoopQuestions = (themeJson.loop_questions === "true");
+        allowNegativeScore = themeJson.negative_score;
+        allowRandomAwnsers = themeJson.random_awnsers;
+        allowRandomQuestions = themeJson.random_questions;
+        allowLoopQuestions = themeJson.loop_questions;
         started = false;
         score = 0;
         questionIndex = 0;
@@ -208,10 +208,6 @@ BasicGame.Game.prototype = {
         this.nextQuestion();
     },
 
-    stopGame: function(){
-
-    },
-
     muteSound: function(){
 
     },
@@ -227,7 +223,6 @@ BasicGame.Game.prototype = {
         awnserFrameGroup.visible = false;
         awnserTextGroup.visible = false;
         questionField.text = themeJson.end_text;
-
 
 
         var countCorrect = 0;
@@ -252,6 +247,8 @@ BasicGame.Game.prototype = {
     },
 
     nextQuestion: function(){
+        console.log("Next Question called");
+
         if(allowRandomQuestions){
             var randomQuestionIndex = Math.floor(Math.random() * questions.length);
             currentQuestion = questions[randomQuestionIndex];
@@ -310,6 +307,8 @@ BasicGame.Game.prototype = {
             this.handleEndOfGame();
         }
         else{
+            countdownTimer.add(1000, this.updateTime, this);
+            countdownTimer.start();
             timeField.text = "Time: " + currentTime;
         }
     }
