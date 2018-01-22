@@ -13,7 +13,9 @@ BasicGame.Boot.prototype = {
         });
 
         this.load.image("background", "assets/images/sprites/background.jpg");
-        this.load.image("button", "assets/images/sprites/default_button.jpg");
+        this.load.image("button", "assets/images/sprites/default_button.png");
+        this.load.image("crosshair", "assets/images/sprites/crosshair.png");
+        this.load.image("start_button", "assets/images/sprites/start_button.png");
     },
 
     create: function() {

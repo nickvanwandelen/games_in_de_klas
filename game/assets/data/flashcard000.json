@@ -1,13 +1,171 @@
 {
     "themes": [
         {
+            "theme_id": "Appelsap",
+            "theme_name": "Beer Facts",
+            "theme_description": "Theme about beers!",
+            "start_text": "Press start to play, you have 90 seconds to awnser as many questions as possible!",
+            "end_text": "Good Job!",
+            "allocated_time": "90",
+            "negative_score": true,
+            "random_questions": false,
+            "random_awnsers": true,
+            "loop_questions": false,
+            "theme_questions": [
+                [
+                    "Hydrogen",
+                    "H"
+                ],
+                [
+                    "Helium",
+                    "He"
+                ],
+                [
+                    "Carbon",
+                    "C"
+                ],
+                [
+                    "Oxygen",
+                    "O"
+                ],
+                [
+                    "Sulfur",
+                    "S"
+                ],
+                [
+                    "Fluor",
+                    "F"
+                ],
+                [
+                    "Argon",
+                    "Ar"
+                ],
+                [
+                    "Titanium",
+                    "Ti"
+                ],
+                [
+                    "Nickel",
+                    "Ni"
+                ],
+                [
+                    "Yttrium",
+                    "Y"
+                ],
+                [
+                    "Xeon",
+                    "Xe"
+                ],
+                [
+                    "Iridium",
+                    "Ir"
+                ],
+                [
+                    "Uranium",
+                    "U"
+                ],
+                [
+                    "Lawrencium",
+                    "Lr"
+                ]
+            ]
+        },
+        {
+            "theme_id": "NasiGoreng",
+            "theme_name": "City Geography",
+            "theme_description": "A theme about the largest cities in the world!",
+            "start_text": "You have 120 seconds to answer as many questions as possible",
+            "end_text": "Well done!",
+            "allocated_time": "120",
+            "negative_score": true,
+            "random_questions": true,
+            "random_awnsers": false,
+            "loop_questions": true,
+            "theme_questions": [
+                [
+                    "Tokyo",
+                    "1"
+                ],
+                [
+                    "New York",
+                    "2"
+                ],
+                [
+                    "Sao Paulo",
+                    "3"
+                ],
+                [
+                    "Seoul",
+                    "4"
+                ],
+                [
+                    "Mexico City",
+                    "5"
+                ],
+                [
+                    "Osaka",
+                    "6"
+                ],
+                [
+                    "Manila",
+                    "7"
+                ],
+                [
+                    "Mumbai",
+                    "8"
+                ],
+                [
+                    "Delhi",
+                    "9"
+                ],
+                [
+                    "Jakarta",
+                    "10"
+                ]
+            ]
+        },
+        {
+            "theme_id": "theme_5a629508ca663",
+            "theme_name": "Programming Dates",
+            "theme_description": "A theme about the release dates of programming languages",
+            "start_text": "Hello! You have 60 seconds to complete this theme",
+            "end_text": "Nice work!",
+            "allocated_time": "60",
+            "negative_score": true,
+            "random_questions": true,
+            "random_awnsers": false,
+            "loop_questions": true,
+            "theme_questions": [
+                [
+                    "TypeScript",
+                    "2012"
+                ],
+                [
+                    "Powershell",
+                    "2006"
+                ],
+                [
+                    "VB .NET",
+                    "2001"
+                ],
+                [
+                    "Javascript",
+                    "1995"
+                ],
+                [
+                    "Haskell",
+                    "1990"
+                ]
+            ]
+        },
+        {
             "theme_id": "TestID1",
             "theme_name": "Capitals",
             "theme_description": "Theme about the capitals around the world!",
             "start_text": "Press start to play, you have 2 minutes to awnser as many questions as possible!",
             "end_text": "Good job!",
             "allocated_time": "120",
-            "negative_score": true,
+            "negative_score": false,
             "random_questions": false,
             "random_awnsers": true,
             "loop_questions": false,
@@ -215,172 +373,6 @@
                 [
                     "Vatican City (Holy See)",
                     "Vatican City"
-                ]
-            ]
-        },
-        {
-            "theme_id": "Appelsap",
-            "theme_name": "Beer Facts",
-            "theme_description": "Theme about beers!",
-            "start_text": "Press start to play, you have 90 seconds to awnser as many questions as possible!",
-            "end_text": "Good Job!",
-            "allocated_time": "90",
-            "negative_score": true,
-            "random_questions": false,
-            "random_awnsers": true,
-            "loop_questions": false,
-            "theme_questions": [
-                [
-                    "Hydrogen",
-                    "H"
-                ],
-                [
-                    "Helium",
-                    "He"
-                ],
-                [
-                    "Carbon",
-                    "C"
-                ],
-                [
-                    "Oxygen",
-                    "O"
-                ],
-                [
-                    "Sulfur",
-                    "S"
-                ],
-                [
-                    "Fluor",
-                    "F"
-                ],
-                [
-                    "Argon",
-                    "Ar"
-                ],
-                [
-                    "Titanium",
-                    "Ti"
-                ],
-                [
-                    "Nickel",
-                    "Ni"
-                ],
-                [
-                    "Yttrium",
-                    "Y"
-                ],
-                [
-                    "Xeon",
-                    "Xe"
-                ],
-                [
-                    "Iridium",
-                    "Ir"
-                ],
-                [
-                    "Uranium",
-                    "U"
-                ],
-                [
-                    "Lawrencium",
-                    "Lr"
-                ]
-            ]
-        },
-        {
-            "theme_id": "NasiGoreng",
-            "theme_name": "City Geography",
-            "theme_description": "A theme about the largest cities in the world!",
-            "start_text": "You have 120 seconds to answer as many questions as possible",
-            "end_text": "Well done!",
-            "allocated_time": "120",
-            "negative_score": true,
-            "random_questions": true,
-            "random_awnsers": false,
-            "loop_questions": true,
-            "theme_questions": [
-                [
-                    "Tokyo",
-                    "1"
-                ],
-                [
-                    "New York",
-                    "2"
-                ],
-                [
-                    "Sao Paulo",
-                    "3"
-                ],
-                [
-                    "Seoul",
-                    "4"
-                ],
-                [
-                    "Mexico City",
-                    "5"
-                ],
-                [
-                    "Osaka",
-                    "6"
-                ],
-                [
-                    "Manila",
-                    "7"
-                ],
-                [
-                    "Mumbai",
-                    "8"
-                ],
-                [
-                    "Delhi",
-                    "9"
-                ],
-                [
-                    "Jakarta",
-                    "10"
-                ]
-            ]
-        },
-        {
-            "theme_id": "theme_5a629508ca663",
-            "theme_name": "Programming Dates",
-            "theme_description": "A theme about the release dates of programming languages",
-            "start_text": "Hello! You have 60 seconds to complete this theme",
-            "end_text": "Nice work!",
-            "allocated_time": "60",
-            "negative_score": true,
-            "random_questions": true,
-            "random_awnsers": false,
-            "loop_questions": true,
-            "theme_questions": [
-                [
-                    "TypeScript",
-                    "2012"
-                ],
-                [
-                    "Powershell",
-                    "2006"
-                ],
-                [
-                    "VB .NET",
-                    "2001"
-                ],
-                [
-                    "Javascript",
-                    "1995"
-                ],
-                [
-                    "Haskell",
-                    "1990"
-                ],
-                [
-                    "Test A",
-                    "Test A"
-                ],
-                [
-                    "Test B",
-                    "Test B"
                 ]
             ]
         }

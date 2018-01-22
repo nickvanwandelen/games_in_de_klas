@@ -1,37 +1,43 @@
+var cursor;
+var self;
+
 BasicGame.MainMenu = function(game){
     this.music = null;
 };
 
 BasicGame.MainMenu.prototype = {
     preload: function(game){
+        self = this;
+
         this.game.add.sprite(0,0, 'background');
 
-        var game_title = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'gameTitle');
+        var start_button = this.game.add.button(this.game.world.centerX, this.game.world.height, "start_button", this.handlePlayGame, this, 2, 1, 0);
+        start_button.name = "easy";
+        start_button.anchor.setTo(0.5, 0.5);
+        start_button.scale.setTo(0.5, 0.5);
+
+        var start_tween = this.game.add.tween(start_button).to({y: 600}, 500, Phaser.Easing.Linear.None, false);
+        start_tween.start();
+
+        var style = { font: "bold 100px Playbill", fill: "#442416", align: "center", wordWrap: true, wordWrapWidth: 800 };
+        var game_title = this.game.add.text(this.game.world.centerX, 200, "Western Mayhem!", style);
         game_title.anchor.setTo(0.5, 0.5);
 
-        var easy_button = this.game.add.button(this.game.world.centerX - 300, this.game.world.height, "button_easy", this.handlePlayGame, this, 2, 1, 0);
-        easy_button.name = "easy";
-        easy_button.anchor.setTo(0.5, 0.5);
-
-        var medium_button = this.game.add.button(this.game.world.centerX, this.game.world.height, "button_medium", this.handlePlayGame, this, 2, 1, 0);
-        medium_button.name = "medium";
-        medium_button.anchor.setTo(0.5, 0.5);
-
-        var hard_button = this.game.add.button(this.game.world.centerX + 300, this.game.world.height, "button_hard", this.handlePlayGame, this, 2, 1, 0);
-        hard_button.name = "hard";
-        hard_button.anchor.setTo(0.5, 0.5);
-
-        var easy_tween = this.game.add.tween(easy_button).to({y: 600}, 750, Phaser.Easing.Bounce.None, false);
-        var medium_tween = this.game.add.tween(medium_button).to({y: 600}, 750, Phaser.Easing.Bounce.None, false);
-        var hard_tween = this.game.add.tween(hard_button).to({y: 600}, 750, Phaser.Easing.Bounce.None, false);
-
-        easy_tween.start();
-        medium_tween.start();
-        hard_tween.start();
     },
 
     create: function(game){
+        this.cursor = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'crosshair');
+        this.cursor.anchor.setTo(0.5, 0.5);
+        this.cursor.scale.setTo(0.15, 0.15);
+        this.game.canvas.style.cursor = "none";
+    },
 
+    update: function(game){
+        this.game.input.addMoveCallback(function(pointer, x, y){
+            self.cursor.x = x;
+            self.cursor.y = y;
+        }, game);
+        this.game.canvas.style.cursor = "none";
     },
 
     handlePlayGame: function(pressedButton){
@@ -50,7 +56,7 @@ BasicGame.MainMenu.prototype = {
                 break;
         }
 
-        if(BasicGame.difficulty != "error"){
+        if(BasicGame.difficulty !== "error"){
             this.state.start("Preselect");
         }
     }

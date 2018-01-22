@@ -106,7 +106,7 @@ function handleAddRow(){
 
     questionCell.innerHTML = '<input type="text" placeholder="Your question" name="question[]" required="">';
     answerCell.innerHTML = '<input type="text" placeholder="The Answer" name="answer[]" required="">';
-    checkedCell.innerHTML = '<input type="checkbox" name="checked[]" required="">';
+    checkedCell.innerHTML = '<input type="checkbox" name="checked[]">';
 
     return addedRow;
 }

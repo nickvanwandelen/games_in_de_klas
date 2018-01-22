@@ -1,4 +1,5 @@
 var themeJson;
+var cursor;
 
 var questions;
 var currentQuestion;
@@ -25,6 +26,8 @@ var awnserTextGroup;
 var self;
 var styleA;
 var styleB;
+var styleC;
+var styleD;
 var countdownTimer;
 
 var scoreField;
@@ -57,19 +60,10 @@ BasicGame.Game.prototype = {
         }
 
         //Creating styles A and B
-        styleA = { font: "bold 36px Arial", fill: "#FFFFFF", align: "center", wordWrap: true, wordWrapWidth: 256 };
-        styleB = { font: "bold 36px Arial", fill: "#FFFFFF", align: "center", wordWrap: true, wordWrapWidth: 800 };
-        styleC = { font: "bold 20px Arial", fill: "#FFFFFF", align: "center", wordWrap: true, wordWrapWidth: 100};
-
-        //Setting cursor
-        /*
-        cursor = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY,"crosshair");
-        cursor.anchor.setTo(0.5, 0.5);
-        cursor.scale.set(1,1);
-        cursor.inputEnabled = true;
-        cursor.events.onInputDown.add(this.game.state.states.MainMenu.handlePlayGame, this);
-        this.game.physics.arcade.enable(cursor);
-        */
+        styleA = { font: "bold 50px Playbill", fill: "#442416", align: "center", wordWrap: true, wordWrapWidth: 256 }; //score time and question fields
+        styleB = { font: "bold 50px Playbill", fill: "#442416", align: "center", wordWrap: true, wordWrapWidth: 600 }; //question itself
+        styleC = { font: "bold 50px Playbill", fill: "#FFFFFF", align: "center", wordWrap: true, wordWrapWidth: 600}; //start mute and end fields
+        styleD = { font: "bold 30px Playbill", fill: "#442416", align: "center", wordWrap: true, wordWrapWidth: 7}; //answer
 
         //Retrieving theme variables from the JSON file
         questions = themeJson.theme_questions;
@@ -97,13 +91,13 @@ BasicGame.Game.prototype = {
         timeField = this.game.add.text(20, 100, "Time: " + currentTime, styleA, feedbackHud);
         questionIndexField = this.game.add.text(20, 150, "Question: ", styleA, feedbackHud);
 
-        startStopField = this.game.add.text(20, self.game.world.centerY, "Start Game", styleB, feedbackHud);
+        startStopField = this.game.add.text(20, self.game.world.centerY, "Start Game", styleC, feedbackHud);
         startStopField.name = "startstop";
         startStopField.inputEnabled = true;
-        var muteSoundField = this.game.add.text(20, self.game.world.centerY + 200, "Mute Sound", styleB, feedbackHud);
+        var muteSoundField = this.game.add.text(20, self.game.world.centerY + 200, "Mute Sound", styleC, feedbackHud);
         muteSoundField.name = "mute";
         muteSoundField.inputEnabled = true;
-        var exitGameField = this.game.add.text(20, self.game.world.centerY + 250, "Exit Game", styleB, feedbackHud);
+        var exitGameField = this.game.add.text(20, self.game.world.centerY + 250, "Exit Game", styleC, feedbackHud);
         exitGameField.name = "exit";
         exitGameField.inputEnabled = true;
         feedbackHud.add(scoreField, timeField, questionIndexField);
@@ -112,9 +106,10 @@ BasicGame.Game.prototype = {
 
         //Creating the question group and fields
         var questionHud = this.game.add.group();
-        questionField = this.game.add.text(0, self.game.world.centerY - 200, themeJson.start_text, styleB, questionHud);
+        questionField = this.game.add.text(self.game.world.centerX, 50, themeJson.start_text, styleB, questionHud);
+        questionField.anchor.setTo(0.5, 0.5);
+        questionField.setTextBounds(0, 50, this.game.world.width - 100, 150);
         questionHud.add(questionField);
-        questionHud.x = 400;
 
         awnserFrameGroup = this.game.add.group();
         awnserTextGroup = this.game.add.group();
@@ -128,9 +123,10 @@ BasicGame.Game.prototype = {
             awnserFrame.height = 150;
         }
         for(var j = 0; j < 4; j++){
-            var awnserText = this.game.add.text(j * 150, self.game.world.centerY + 175, "Awnser_" + j, styleC, awnserTextGroup);
+            var awnserText = this.game.add.text(awnserFrameGroup.children[j].x, self.game.world.centerY + 175, "Awnser_" + j, styleD, awnserTextGroup);
             awnserText.inputEnabled = true;
             awnserText.name = "awnser_text_" + j;
+            awnserText.setTextBounds(10, 0, 90, 100);
             awnserTextGroup.add(awnserText);
         }
 
@@ -142,6 +138,19 @@ BasicGame.Game.prototype = {
         awnserTextGroup.onChildInputDown.add(this.handleSelectedAwnserInput, this);
         awnserTextGroup.visible = false;
 
+        this.cursor = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'crosshair');
+        this.cursor.anchor.setTo(0.5, 0.5);
+        this.cursor.scale.setTo(0.15, 0.15);
+        this.game.canvas.style.cursor = "none";
+
+    },
+
+    update: function(game){
+        this.game.input.addMoveCallback(function(pointer, x, y){
+            self.cursor.x = x;
+            self.cursor.y = y;
+        }, game);
+        this.game.canvas.style.cursor = "none";
     },
 
     handleFeedbackInput: function(selectedButton){
