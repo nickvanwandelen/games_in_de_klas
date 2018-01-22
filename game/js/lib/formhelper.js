@@ -14,6 +14,8 @@ function handleChangeThemeSelector(){
 }
 
 function loadForm(json){
+    clearForm();
+
     var id = document.getElementById("theme_id");
     id.value = json.theme_id;
 
@@ -89,11 +91,7 @@ function clearForm(){
     var loop_questions = document.getElementById("theme_loop_questions");
     loop_questions.checked = false;
 
-    var table = document.getElementById("questionsTable");
-    for(var index = 2; index < table.rows.length - 1; index++){
-        table.rows[index].cells[2].children[0].checked = true;
-    }
-    handleRemoveRows();
+    handleRemoveRows(true);
 }
 
 function handleAddRow(){
@@ -111,22 +109,20 @@ function handleAddRow(){
     return addedRow;
 }
 
-function handleRemoveRows(){
+function handleRemoveRows(deleteAllRows = false){
     var table = document.getElementById("questionsTable");
-    var removeIndexes = [];
-    var rowCount = table.rows.length - 1;
 
-    for(var index = 2; index < rowCount; index++){
-        if(table.rows[index].cells[2].children[0] !== null && table.rows[index].cells[2].children[0].checked){
-            removeIndexes.push(index);
+    for(var index = 2; index < table.rows.length - 1; index++){
+        if(deleteAllRows){
+            table.deleteRow(index);
+            index--;
         }
-    }
-
-    removeIndexes.sort(function(a, b){return b-a});
-    console.log("Removing: " + removeIndexes);
-
-    for(var removeIndex = 0; removeIndex < removeIndexes.length; removeIndex++){
-        table.removeByKey(removeIndexes[removeIndex]);
+        else{
+            if(table.rows[index].cells[2].children[0].checked){
+                table.deleteRow(index);
+                index--;
+            }
+        }
 
     }
 }

@@ -35,6 +35,7 @@ var timeField;
 var questionField;
 var questionIndexField;
 var startStopField;
+var muteSoundField;
 
 BasicGame.Game = function(game){};
 
@@ -94,7 +95,7 @@ BasicGame.Game.prototype = {
         startStopField = this.game.add.text(20, self.game.world.centerY, "Start Game", styleC, feedbackHud);
         startStopField.name = "startstop";
         startStopField.inputEnabled = true;
-        var muteSoundField = this.game.add.text(20, self.game.world.centerY + 200, "Mute Sound", styleC, feedbackHud);
+        muteSoundField = this.game.add.text(20, self.game.world.centerY + 200, "Mute Sound", styleC, feedbackHud);
         muteSoundField.name = "mute";
         muteSoundField.inputEnabled = true;
         var exitGameField = this.game.add.text(20, self.game.world.centerY + 250, "Exit Game", styleC, feedbackHud);
@@ -218,7 +219,14 @@ BasicGame.Game.prototype = {
     },
 
     muteSound: function(){
-
+        if(BasicGame.audio.volume === 0){
+            BasicGame.audio.volume = 1;
+            muteSoundField.text = "Mute sound";
+        }
+        else{
+            BasicGame.audio.volume = 0;
+            muteSoundField.text = "Enable sound"
+        }
     },
 
     exitGame: function(){

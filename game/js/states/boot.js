@@ -16,6 +16,8 @@ BasicGame.Boot.prototype = {
         this.load.image("button", "assets/images/sprites/default_button.png");
         this.load.image("crosshair", "assets/images/sprites/crosshair.png");
         this.load.image("start_button", "assets/images/sprites/start_button.png");
+
+        this.load.audio("main_theme", "assets/audio/main_theme.ogg");
     },
 
     create: function() {
