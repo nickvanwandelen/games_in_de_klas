@@ -34,9 +34,6 @@ BasicGame.MainMenu.prototype = {
     },
 
     create: function(game){
-        BasicGame.audio = this.game.add.audio("main_theme", 1, true);
-        BasicGame.audio.play();
-
         this.cursor = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'crosshair');
         this.cursor.anchor.setTo(0.5, 0.5);
         this.cursor.scale.setTo(0.15, 0.15);

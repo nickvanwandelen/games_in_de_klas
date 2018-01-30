@@ -40,6 +40,10 @@ BasicGame.Preloader.prototype = {
         this.preloaderBar.scale.set(1, 1);
         this.load.setPreloadSprite(this.preloaderBar);
         this.game.load.json('flashcard000', this.ext_data_url);
+
+        BasicGame.audio = this.game.add.audio("main_theme", 1, true);
+        BasicGame.audio.play();
+
     },
 
     update: function(){

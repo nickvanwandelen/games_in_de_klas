@@ -274,6 +274,8 @@ BasicGame.Game.prototype = {
                 questions.splice(questions[randomQuestionIndex], 1);
             }
 
+            questionIndex = randomQuestionIndex;
+
         }
         else{
             currentQuestion = questions[questionIndex];
@@ -310,6 +312,23 @@ BasicGame.Game.prototype = {
             awnserFrameGroup.children[answerFieldIndexesArray[0]].value = questions[randomAnswerIndexA][1];
             awnserFrameGroup.children[answerFieldIndexesArray[1]].value = questions[randomAnswerIndexB][1];
             awnserFrameGroup.children[answerFieldIndexesArray[2]].value = questions[randomAnswerIndexC][1];
+        }
+        else{
+
+            var tempQuestionIndex = questionIndex + 1;
+            if(tempQuestionIndex > questions.length){
+                tempQuestionIndex = questionIndex;
+            }
+
+            for(var answerIndex = 0; answerIndex < 3; answerIndex++){
+                awnserTextGroup.children[answerFieldIndexesArray[answerIndex]].text = questions[tempQuestionIndex][1];
+                awnserFrameGroup.children[answerFieldIndexesArray[answerIndex]].text = questions[tempQuestionIndex][1];
+
+                tempQuestionIndex++;
+                if(tempQuestionIndex > questions.length){
+                    tempQuestionIndex = 0;
+                }
+            }
         }
 
         questionField.text = currentQuestion[0];
