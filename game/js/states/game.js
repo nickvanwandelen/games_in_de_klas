@@ -154,6 +154,11 @@ BasicGame.Game.prototype = {
         this.game.canvas.style.cursor = "none";
     },
 
+    /**
+     * Handles the StartStop, Mute Sound and Exit Game buttons and redirects to the apropriate function
+     *
+     * @param selectedButton: the button that is selected
+     */
     handleFeedbackInput: function(selectedButton){
         console.log('called');
         switch(selectedButton.name){
@@ -169,13 +174,19 @@ BasicGame.Game.prototype = {
         }
     },
 
+    /**
+     * Called when a user clicks on a answer. This method checks if the selected answer is correct and increments or deducts the score.
+     * When a answer is correct, call nextQuestion()
+     *
+     * @param selectedButton: the answer that is selected (either a Phaser.Text or Phaser.Sprite object)
+     */
     handleSelectedAwnserInput: function(selectedButton){
         var selectedAnswer = selectedButton.text ? selectedButton.text: selectedButton.value;
         console.log(selectedAnswer);
 
         if(selectedAnswer === currentQuestion[1]){
             score = score + 10;
-            submittedAnswers.push("Correct");
+            submittedAnswers.push("Correct"); //push correct to submittedAnswers. This array gets checked in handleEndOfGame()
 
             if(questionIndex === maximumQuestions && !allowLoopQuestions){
                 this.handleEndOfGame();
@@ -186,17 +197,20 @@ BasicGame.Game.prototype = {
             }
         }
         else{
-            if(!allowNegativeScore && (score - 5) < 0){
+            if(!allowNegativeScore && (score - 5) < 0){ //check if a negative score is allowed
                 score = 0;
             }
             else{
                 score = score - 5;
             }
-            submittedAnswers.push("Incorrect");
+            submittedAnswers.push("Incorrect"); //same as Correct above
         }
-        scoreField.text = "Score: " + score;
+        scoreField.text = "Score: " + score; //update the score
     },
 
+    /**
+     * Called when the player presses Start Game or Stop Game. Responsible for starting up the game, or ending the game
+     */
     startGame: function(){
         started = !started;
 
@@ -211,13 +225,16 @@ BasicGame.Game.prototype = {
         awnserTextGroup.visible = true;
         submittedAnswers = [];
 
-        countdownTimer = self.game.time.create();
+        countdownTimer = self.game.time.create(); //call the first updateTime function
         var updateTimeEvent = countdownTimer.add(1000, this.updateTime, this);
         countdownTimer.start();
 
         this.nextQuestion();
     },
 
+    /**
+     * Mutes the background music, but doesn't stop it
+     */
     muteSound: function(){
         if(BasicGame.audio.volume === 0){
             BasicGame.audio.volume = 1;
@@ -229,24 +246,30 @@ BasicGame.Game.prototype = {
         }
     },
 
+    /**
+     * Exits the game and returns the user to the Main Menu state
+     */
     exitGame: function(){
         self.state.start('MainMenu');
     },
 
+    /**
+     * Calles when the game has ended. Responsible for displaying the end text and scores for 7 seconds. After 7 seconds, call exitGame()
+     */
     handleEndOfGame: function(){
-        currentTime = -1;
+        currentTime = -1; //save force the timer to stop
         countdownTimer.removeAll();
 
-        awnserFrameGroup.visible = false;
+        awnserFrameGroup.visible = false; //hide the answers and images
         awnserTextGroup.visible = false;
-        questionField.text = themeJson.end_text;
+        questionField.text = themeJson.end_text; //replace the question with the end text.
 
 
         var countCorrect = 0;
         var countIncorrect = 0;
 
         for(var submittedAnswer = 0; submittedAnswer < submittedAnswers.length; submittedAnswer++){
-            if(submittedAnswers[submittedAnswer] === "Correct"){
+            if(submittedAnswers[submittedAnswer] === "Correct"){ //check if an answer is correct and increment correct or incorrect
                 countCorrect++;
             }
             else{
@@ -254,23 +277,27 @@ BasicGame.Game.prototype = {
             }
         }
 
-        timeField.text = "Correct: " + countCorrect;
-        questionIndexField.text = "Incorrect: " + countIncorrect;
+        timeField.text = "Correct: " + countCorrect; //display the amount of times the user has been correct
+        questionIndexField.text = "Incorrect: " + countIncorrect; //display the amount of times the user has selected the wrong answer
         startStopField.visible = false;
 
-        var returnToMainMenu = self.game.time.create();
-        var mainMenuEvent = returnToMainMenu.add(7000, function(){this.game.state.start('MainMenu')}, this);
+        var returnToMainMenu = self.game.time.create(); //create a timer that exits the game after 7 seconds
+        var mainMenuEvent = returnToMainMenu.add(7000, this.exitGame, this);
         returnToMainMenu.start();
     },
 
+    /**
+     * Called when the game is starting, or the user has pressed the correct answer.
+     * This method is responsible for retrieving and displaying the next question based on the parameters set in the JSON themes file.
+     */
     nextQuestion: function(){
         console.log("Next Question called");
 
-        if(allowRandomQuestions){
-            var randomQuestionIndex = Math.floor(Math.random() * questions.length);
+        if(allowRandomQuestions){ //check if randomQuestions is allowed
+            var randomQuestionIndex = Math.floor(Math.random() * questions.length); //get a random question from the array
             currentQuestion = questions[randomQuestionIndex];
 
-            if(!allowLoopQuestions){
+            if(!allowLoopQuestions){ //when loop isn't allowed, remove the question from the array
                 questions.splice(questions[randomQuestionIndex], 1);
             }
 
@@ -278,26 +305,26 @@ BasicGame.Game.prototype = {
 
         }
         else{
-            currentQuestion = questions[questionIndex];
-
-            if(allowLoopQuestions && questions.length === questionIndex){
+            if(allowLoopQuestions && questions.length === questionIndex){ //check if the increment in questionIndex is still within the questions array, if not: set the questionIndex to 0
                 questionIndex = 0;
             }
+
+            currentQuestion = questions[questionIndex];
         }
 
+        //Setting the correct answer at a random index
         var answerFieldIndexesArray = [0, 1, 2, 3];
         var correctAnswerIndex = Math.floor(Math.random() * answerFieldIndexesArray.length);
         awnserTextGroup.children[correctAnswerIndex].text = currentQuestion[1];
         awnserFrameGroup.children[correctAnswerIndex].value = currentQuestion[1];
         answerFieldIndexesArray.splice(correctAnswerIndex, 1);
 
-        if(allowRandomAwnsers){
+        if(allowRandomAwnsers){ //if randomAnswers is selected, all wrong answers will be randomly retrieved from the questions array
             var randomAnswerIndexA = -1;
             var randomAnswerIndexB = -1;
             var randomAnswerIndexC = -1;
 
-            console.log(questions.length);
-
+            //avoid the same randomly retrived answers
             while(randomAnswerIndexA === randomAnswerIndexB || randomAnswerIndexA === randomAnswerIndexC || randomAnswerIndexB === randomAnswerIndexC){
 
                 randomAnswerIndexA = Math.floor(Math.random() * questions.length);
@@ -306,6 +333,7 @@ BasicGame.Game.prototype = {
 
             }
 
+            //updating all the text and sprite values with the question answers
             awnserTextGroup.children[answerFieldIndexesArray[0]].text = questions[randomAnswerIndexA][1];
             awnserTextGroup.children[answerFieldIndexesArray[1]].text = questions[randomAnswerIndexB][1];
             awnserTextGroup.children[answerFieldIndexesArray[2]].text = questions[randomAnswerIndexC][1];
@@ -313,14 +341,14 @@ BasicGame.Game.prototype = {
             awnserFrameGroup.children[answerFieldIndexesArray[1]].value = questions[randomAnswerIndexB][1];
             awnserFrameGroup.children[answerFieldIndexesArray[2]].value = questions[randomAnswerIndexC][1];
         }
-        else{
+        else{ //if randomAnswers isn't allowed, take the next 3 answers after the correct answer
 
             var tempQuestionIndex = questionIndex;
 
             for(var answerIndex = 0; answerIndex < 3; answerIndex++){
                 tempQuestionIndex++;
 
-                if(tempQuestionIndex === questions.length){
+                if(tempQuestionIndex === questions.length){ //if the next 3 answers go above the amount of questions, set to 0
                     tempQuestionIndex = 0;
                 }
 
@@ -334,6 +362,11 @@ BasicGame.Game.prototype = {
 
     },
 
+    /**
+     * Function responsible for updating the time after the game has started.
+     * Calls itself every second and deducts a second in the currentTime variable.
+     * If currentTime is 0, call handleEndOfGame() to stop the timer and end the game
+     */
     updateTime: function(){
         currentTime--;
 

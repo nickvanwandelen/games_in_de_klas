@@ -35,7 +35,7 @@
         return;
     }
 
-    if($theme_id === null){
+    if($theme_id === ""){
         $theme_id = uniqid('theme_');
         $newly_generated = true;
     }

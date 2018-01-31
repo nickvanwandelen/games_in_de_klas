@@ -45,7 +45,7 @@
                         Theme name: <input type="text" name="theme-name" id="theme_name" placeholder="Name of the theme" required>
                     </p>
                     <p>
-                        Theme description: <input type="text" name="theme-description" id="theme_description" placeholder="Description">
+                        Theme description: <textarea name="theme-description" id="theme_description" placeholder="Description" rows="3" cols="40"></textarea>
                     </p>
                     <p>
                         Starting text: <input type="text" name="start-text" id="theme_start" placeholder="This text will be displayed before the game begins" required>
