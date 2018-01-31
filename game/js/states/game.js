@@ -315,19 +315,17 @@ BasicGame.Game.prototype = {
         }
         else{
 
-            var tempQuestionIndex = questionIndex + 1;
-            if(tempQuestionIndex > questions.length){
-                tempQuestionIndex = questionIndex;
-            }
+            var tempQuestionIndex = questionIndex;
 
             for(var answerIndex = 0; answerIndex < 3; answerIndex++){
-                awnserTextGroup.children[answerFieldIndexesArray[answerIndex]].text = questions[tempQuestionIndex][1];
-                awnserFrameGroup.children[answerFieldIndexesArray[answerIndex]].text = questions[tempQuestionIndex][1];
-
                 tempQuestionIndex++;
-                if(tempQuestionIndex > questions.length){
+
+                if(tempQuestionIndex === questions.length){
                     tempQuestionIndex = 0;
                 }
+
+                awnserTextGroup.children[answerFieldIndexesArray[answerIndex]].text = questions[tempQuestionIndex][1];
+                awnserFrameGroup.children[answerFieldIndexesArray[answerIndex]].value = questions[tempQuestionIndex][1];
             }
         }
 

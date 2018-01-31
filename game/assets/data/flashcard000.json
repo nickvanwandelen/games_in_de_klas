@@ -375,6 +375,32 @@
                     "10"
                 ]
             ]
+        },
+        {
+            "theme_id": "dsafjsd",
+            "theme_name": "Test Thema",
+            "theme_description": "met een mooie beschrijving",
+            "start_text": "Hallo mijn naam is Henk",
+            "end_text": "En ik ben Gerda",
+            "allocated_time": "30",
+            "negative_score": true,
+            "random_questions": true,
+            "random_awnsers": true,
+            "loop_questions": true,
+            "theme_questions": [
+                [
+                    "Tosti",
+                    "Ham-Kaas"
+                ],
+                [
+                    "Pizza",
+                    "Hot & Spicy"
+                ],
+                [
+                    "Ijs",
+                    "Cookie Dough"
+                ]
+            ]
         }
     ]
 }
