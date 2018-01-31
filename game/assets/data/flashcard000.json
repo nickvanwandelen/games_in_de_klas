@@ -254,8 +254,8 @@
         },
         {
             "theme_id": "Appelsap",
-            "theme_name": "Beer Facts",
-            "theme_description": "Theme about beers!",
+            "theme_name": "Atoms",
+            "theme_description": "Theme about Atoms!",
             "start_text": "Press start to play, you have 90 seconds to awnser as many questions as possible!",
             "end_text": "Good Job!",
             "allocated_time": "90",
@@ -373,74 +373,6 @@
                 [
                     "Jakarta",
                     "10"
-                ]
-            ]
-        },
-        {
-            "theme_id": "theme_5a722a89e5ac1",
-            "theme_name": "Kabanossi",
-            "theme_description": "Is mega lekker",
-            "start_text": "Hallo mijn naam is Henk",
-            "end_text": "Hallo Henk",
-            "allocated_time": "20",
-            "negative_score": true,
-            "random_questions": true,
-            "random_awnsers": true,
-            "loop_questions": true,
-            "theme_questions": [
-                [
-                    "Tosti",
-                    "Ham Kaas"
-                ],
-                [
-                    "Pizza`",
-                    "Hot & Spicy"
-                ],
-                [
-                    "Thee",
-                    "Rooibos"
-                ],
-                [
-                    "Koffie",
-                    "Zwart"
-                ],
-                [
-                    "Ijs",
-                    "Cookie Dough"
-                ]
-            ]
-        },
-        {
-            "theme_id": "theme_5a72351110f46",
-            "theme_name": "dsfsda",
-            "theme_description": "fsdfsaf",
-            "start_text": "fdsf",
-            "end_text": "fdsf",
-            "allocated_time": "1256",
-            "negative_score": true,
-            "random_questions": false,
-            "random_awnsers": true,
-            "loop_questions": true,
-            "theme_questions": [
-                [
-                    "fdsf",
-                    "fdsaf"
-                ],
-                [
-                    "fdsafsd",
-                    "fdsafs"
-                ],
-                [
-                    "fdsafds",
-                    "fdsafdsa"
-                ],
-                [
-                    "fdsafsd",
-                    "fdsafsd"
-                ],
-                [
-                    "dfsafsadf",
-                    "fdsafsd"
                 ]
             ]
         }
